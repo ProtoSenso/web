@@ -1,0 +1,57 @@
+/* Master Styles */
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+h2, h3 {
+  color: #444;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+.body-css {
+  margin: 2em;
+  
+  background-image: url('app/Shared/Icons/beer.jpg');
+}
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+
+
+.tile {
+  background: #fff;
+  position: relative;
+  /*border: 1px #A1A1A1 solid;*/
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(194,194,194,1);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(194,194,194,1);
+  box-shadow: 1px 1px 5px 0px rgba(194,194,194,1);
+}
+
+.tile .dvd {
+  border-color: rgba(0,0,0,.1);
+  border-style: solid;
+  border-width: 0;
+}
+
+.tile .tile-header {
+  padding: 8px 15px;
+}
+
+.tile .dvd.dvd-btm {
+  border-bottom-width: 1px;
+}
+
+.tile-header {
+  font-weight: bold;
+  text-align: center;
+  line-height: 46px;
+  border-bottom: 1px solid #eee;
+}
+
+.tile-body {
+  padding: 16px;
+}

@@ -1,0 +1,19 @@
+
+<my-header class="row"></my-header>
+
+<div class="row-wrapper">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="tile">
+        <div class="tile-header">
+          <h1>Beer-O-Meter</h1>
+        </div>
+        <div class="tile-body">
+          <chart class="center-chart" [options]="options" (load)="saveInstance($event.context)"></chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
