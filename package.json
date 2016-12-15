@@ -1,5 +1,5 @@
 {
-  "name": "BeerOMeter",
+  "name": "House monitoring",
   "version": "1.0.0",
   "scripts": {
     "start": "concurrently \"tsc -w\" \"lite-server\" ",
