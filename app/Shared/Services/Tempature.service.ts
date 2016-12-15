@@ -6,7 +6,6 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class TempatureService {
 
-
     constructor(private http: Http) {}
 
     private baseUrl = 'http://192.168.1.65:9080/';
@@ -17,7 +16,7 @@ export class TempatureService {
         var url = this.baseUrl + this.tempaturesUrl;
         let headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8'});
         let options = new RequestOptions({headers: headers})
-        return this.http.get('http://192.168.1.65:9080/api/temperature_readings', options)
+        return this.http.get(this.baseUrl+'api/temperature_readings', options)
                   .map(res => this.extractData(res))
                   .catch((error) => this.handleError(error));
     } 

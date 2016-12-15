@@ -23,7 +23,7 @@ export class AppComponent {
 
     ngOnInit(): void{
         var dataList = [];
-    
+    /*
         this.tempatureService.listTempatures().subscribe((res) => {
             (res).forEach(element => {
                 dataList.push(element.temperature);
@@ -57,7 +57,7 @@ export class AppComponent {
              this.chart.redraw();
          }) 
         }, 10000);
-        
+        */
     }
 
     saveInstance(chartInstance) {
