@@ -23,7 +23,7 @@ h2, h3 {
 
 .tile {
   
-  background: linear-gradient(to bottom, #fff 12%, #555 100%);
+  background: rgba(240,240,240,1);
   position: relative;
   /*border: 1px #A1A1A1 solid;*/
   -webkit-box-shadow: 1px 1px 5px 0px rgba(194,194,194,1);
@@ -50,7 +50,7 @@ h2, h3 {
   font-weight: bold;
   text-align: center;
   line-height: 46px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ccc;
 }
 
 .tile-body {

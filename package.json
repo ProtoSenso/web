@@ -1,5 +1,5 @@
 {
-  "name": "House monitoring",
+  "name": "house_monitoring",
   "version": "1.0.0",
   "scripts": {
     "start": "concurrently \"tsc -w\" \"lite-server\" ",
