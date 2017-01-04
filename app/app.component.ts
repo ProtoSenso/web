@@ -16,14 +16,36 @@ export class AppComponent {
   chart : HighchartsChartObject;
   options: HighchartsOptions;
   items: Observable<string[]>;
+  fire: boolean = false;
 
     constructor(
         private tempatureService: TempatureService
     ) {  }
 
     ngOnInit(): void{
+
+        var audio = new Audio();
+        audio.src = '../app/Shared/Resources/Sounds/house_fire_alert.mp3';
+        audio.load();
+
+         setInterval(() => {
+             
+             var currentTempature = this.getRandomInt(0, 150)
+
+             if(currentTempature > 100){
+                 this.fire = true;
+                 //audio.play();
+
+             }
+             else{
+                 this.fire = false;
+                 audio.pause();
+             }
+             console.log("Temp: " + currentTempature);
+            }, 10000);
+
         var dataList = [];
-    
+    /*
         this.tempatureService.listTempatures().subscribe((res) => {
             (res).forEach(element => {
                 dataList.push(element.temperature);
@@ -57,11 +79,15 @@ export class AppComponent {
              this.chart.redraw();
          }) 
         }, 10000);
-        
+        */
     }
 
     saveInstance(chartInstance) {
         this.chart = chartInstance;
+    }
+
+    getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
 }

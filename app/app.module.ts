@@ -3,8 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 // Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule, SEED_DATA } from 'angular2-in-memory-web-api';
-import { tempatureData }  from './tempature-data';
 
 //Components && directives
 import { AppComponent }   from './app.component';
