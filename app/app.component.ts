@@ -34,7 +34,7 @@ export class AppComponent {
 
              if(currentTempature > 100){
                  this.fire = true;
-                 //audio.play();
+                 audio.play();
 
              }
              else{
