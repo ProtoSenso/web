@@ -1,3 +1,7 @@
+# VERSIONS
+npm: 3
+node: 4
+
 # How To install
 
 Open command window of the solution
