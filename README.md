@@ -10,8 +10,9 @@ To test which versions youre running or to see if the installation was succesful
 > node -v 
 > npm -v
 
-This should display the correct version of node and npm
+ This should display the correct version of node and npm
 
+####Installation of solution
 
 Open command window of the solution
 
