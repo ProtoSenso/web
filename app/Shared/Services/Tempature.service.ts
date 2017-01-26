@@ -12,7 +12,6 @@ export class TempatureService {
     private tempaturesUrl = 'api/books/'; // URL to web API
     
     listTempatures(): Observable<Tempature[]> {
-
         var url = this.baseUrl + this.tempaturesUrl;
         let headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8'});
         let options = new RequestOptions({headers: headers})
