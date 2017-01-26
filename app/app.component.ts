@@ -17,6 +17,7 @@ export class AppComponent {
   options: HighchartsOptions;
   items: Observable<string[]>;
   fire: boolean = false;
+  audio: HTMLAudioElement;
 
     constructor(
         private tempatureService: TempatureService
@@ -24,62 +25,34 @@ export class AppComponent {
 
     ngOnInit(): void{
 
-        var audio = new Audio();
-        audio.src = '../app/Shared/Resources/Sounds/house_fire_alert.mp3';
-        audio.load();
-
-         setInterval(() => {
-             
-             var currentTempature = this.getRandomInt(0, 150)
-
-             if(currentTempature > 100){
-                 this.fire = true;
-                 audio.play();
-
-             }
-             else{
-                 this.fire = false;
-                 audio.pause();
-             }
-             console.log("Temp: " + currentTempature);
-            }, 10000);
+        this.audio = new Audio();
+        this.audio.src = '../app/Shared/Resources/Sounds/house_fire_alert.mp3';
+        this.audio.load();
 
         var dataList = [];
-    /*
-        this.tempatureService.listTempatures().subscribe((res) => {
-            (res).forEach(element => {
-                dataList.push(element.temperature);
-                
-                 if(dataList.length > 10){
-                     dataList.shift();
-                 }
+    
+       setInterval(() => {
+        //Send the call to the backend and see if we can get some data
 
-                this.options = { 
-                    chart: { type: 'spline' },
-                    title : { text : 'Beer Temp' },
-                    series: [{
-                        data: dataList,
-                    }]
-                };
-                
-            });
-        });
-     
-         setInterval(() => { this.tempatureService.listTempatures().subscribe((res) => {
-             var tempList = [];
-
-             res.forEach(element => {
-                 tempList.push(element.temperature);
-
-                 if(tempList.length > 10){
-                     tempList.shift();
-                 }
-             })
-             this.chart.series[0].setData(tempList, true, true);
-             this.chart.redraw();
-         }) 
+        this.tempatureService.listTempatures().subscribe(
+            
+            data => {
+                    var temp = (data)[0].temperature / 1000;
+                    console.log("Tempature from server: " + temp);
+                    if(temp > 40) {
+                        this.fire=true;
+                        this.audio.play();
+                    }
+                    else {
+                        this.fire=false;
+                        this.audio.pause();
+                    }
+            },
+         onerror => {
+            //If we don't manage to get the data, generate a random number
+            this.FireGenerator();
+         });
         }, 10000);
-        */
     }
 
     saveInstance(chartInstance) {
@@ -88,6 +61,20 @@ export class AppComponent {
 
     getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    private FireGenerator() {
+         var currentTempature = this.getRandomInt(0, 150)
+            console.log("Generated Tempature: " + currentTempature);
+             if(currentTempature > 100){
+                 this.fire = true;
+                 //this.audio.play();
+
+             }
+             else{
+                 this.fire = false;
+                 this.audio.pause();
+             }
     }
 
 }
