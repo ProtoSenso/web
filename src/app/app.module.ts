@@ -3,6 +3,9 @@ import { HttpModule } from '@angular/http';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
+// Import the AF2 Module
+import { AngularFireModule } from 'angularfire2';
+
 //Components && directivesa
 import { MyApp } from './app.component';
 
@@ -13,6 +16,15 @@ import { LoginPage } from '../pages/login/login';
 //Services
 import {TempatureService} from '../services/sensors/tempature.service';
 
+// Firebase config 
+export const firebaseConfig = {
+    apiKey: "AIzaSyBxWPbhkOAHoOToZhmGSYK2D6KMc7dtKQs",
+    authDomain: "grannywatcher.firebaseapp.com",
+    databaseURL: "https://grannywatcher.firebaseio.com",
+    storageBucket: "grannywatcher.appspot.com",
+    messagingSenderId: "405262453706"
+};
+
 @NgModule({
   declarations: [  // components and directives
     MyApp,
@@ -21,7 +33,8 @@ import {TempatureService} from '../services/sensors/tempature.service';
   ],
   imports: [ // module dependencies
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp], // root component
   entryComponents: [
@@ -32,11 +45,3 @@ import {TempatureService} from '../services/sensors/tempature.service';
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, TempatureService]  // services
 })
 export class AppModule {}
-
-export const firebaseConfig = {
-    apiKey: "AIzaSyBxWPbhkOAHoOToZhmGSYK2D6KMc7dtKQs",
-    authDomain: "grannywatcher.firebaseapp.com",
-    databaseURL: "https://grannywatcher.firebaseio.com",
-    storageBucket: "grannywatcher.appspot.com",
-    messagingSenderId: "405262453706"
-};
