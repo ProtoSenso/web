@@ -1,12 +1,23 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Login</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>
+      Login
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+   <img src="../../assets/icon/GrannywatcherLogo.png" class="myphoto">
 
+    <button  ion-button block clear (click)="loginUser()">
+      Login
+    </button>
+
+    <button ion-button block clear (click)="goToResetPassword()">
+      I forgot my password
+    </button>
+
+    <button ion-button block clear (click)="skipLogin()">
+      Skip login
+    </button>
 </ion-content>

@@ -1,0 +1,129 @@
+
+
+import { Injectable } from '@angular/core';
+// import { Injectable, Inject } from '@angular/core';
+import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+// import { AngularFire, AuthProviders, AuthMethods, FirebaseListObservable } from 'angularfire2';
+// import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { LogService } from '../services/log.services';
+import _ from 'lodash';
+
+@Injectable()
+export class UserService {
+
+    private currentUser: any;
+    private invoices: FirebaseListObservable<any>;
+    private users: FirebaseListObservable<any>;
+    private roles: FirebaseListObservable<any>;
+    private admins: FirebaseListObservable<any>;
+    private role: FirebaseObjectObservable<any>;
+    private isAuthenticated: any;
+    private currentrole: string;
+
+    constructor(
+
+        public af: AngularFire,
+        private Log: LogService
+    ) {
+
+        this.af.auth.subscribe(auth => {
+            this.isAuthenticated = auth;
+            if (this.isLoggedIn() !== false) {
+
+                this.init();
+
+            }
+        });
+
+    }
+
+    private init() {
+
+        this.Log.log('User Service init');
+
+        // 1 object with 1 role
+        this.role = this.af.database.object('/users/' + this.isAuthenticated.uid);
+        this.role.subscribe(userrole => {
+            this.Log.log('userrole found', userrole);
+            this.currentrole = userrole.role;
+        });
+
+
+    }
+
+    public getName() {
+        let org = null;
+        try {
+            org = this.isAuthenticated.auth.displayName;
+        } catch (e) {
+            // this.Log.log('photo went wrong', e);
+            org = null;
+        }
+        return org;
+    }
+
+    public getEmail() {
+        let org = null;
+        try {
+            org = this.isAuthenticated.auth.email;
+        } catch (e) {
+            // this.Log.log('photo went wrong', e);
+            org = null;
+        }
+        return org;
+
+    }
+
+    public getPhoto() {
+        let org = null;
+        try {
+            org = this.isAuthenticated.auth.photoURL;
+        } catch (e) {
+            // this.Log.log('photo went wrong', e);
+            org = null;
+        }
+        return org;
+    }
+
+    public getUid() {
+        let org = null;
+        try {
+            org = this.isAuthenticated.uid;
+        } catch (e) {
+            // this.Log.log('photo went wrong', e);
+            org = null;
+        }
+        return org;
+    }
+
+    public getRole() {
+        return this.role;
+    }
+
+    getUser() {
+        return this.currentUser;
+    }
+
+    setUser(user) {
+        this.currentUser = user;
+    }
+
+    public saveUser(role) {
+
+        this.users.push({
+            email: this.getEmail(),
+            name: this.getUid(),
+            role: role
+        });
+
+    }
+
+    public isLoggedIn() {
+        if (this.isAuthenticated === null) {
+            return false;
+        }
+        return true;
+    }
+
+}
