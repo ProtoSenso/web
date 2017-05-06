@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TempatureService } from '../../services/sensors/tempature.service';
 import { Observable } from 'rxjs/Observable';
-import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'FirealarmPage',
@@ -13,7 +12,7 @@ export class FirealarmPage implements OnInit {
   fire: boolean = false;
   audio: HTMLAudioElement;
 
-  constructor(public navCtrl: NavController,  private tempatureService: TempatureService) {  }
+  constructor(private tempatureService: TempatureService) {  }
 
     ngOnInit(): void {
        this.audio = new Audio();

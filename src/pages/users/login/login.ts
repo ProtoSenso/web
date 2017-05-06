@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, AlertController  } from 'ionic-angular';
-import { LoginService } from '../../services/users/login.service';
-import { HomePage } from '../home/home';
+import { LoginService } from '../../../services/users/login.service';
+import { HomePage } from '../../home/home';
 import { ResetPasswordPage } from '../login/resetPassword';
 
 @Component({

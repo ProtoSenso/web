@@ -8,5 +8,24 @@
 </ion-header>
 
 <ion-content padding>
- 
+ <div class="wrapper" style="display: block;" padding>
+   <div class="canvasWrapper">
+       <canvas #statusChart class="chartSize" baseChart
+                [data]="doughnutChartData"
+                [chartType]="doughnutChartType"
+                [options]="doughnutChartOptions"
+                [colors]="doughnutChartColors"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+       </canvas>
+       <ion-icon class="canvasRound" *ngIf="getPriority() == 0" name="happy"></ion-icon>
+       <ion-icon class="canvasRound" *ngIf="getPriority() == 1" name="checkmark-circle"></ion-icon>
+       <ion-icon class="canvasTriangle" *ngIf="getPriority() == 2" name="warning"></ion-icon>
+       <ion-icon class="canvasRound" *ngIf="getPriority() == 3" name="close-circle"></ion-icon>
+    </div>
+    <h3 style="text-align: center">{{status}}</h3>
+  </div>
+  <button  ion-button block clear (click)="changeData()">
+    Change Data
+  </button>
 </ion-content>

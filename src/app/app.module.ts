@@ -3,16 +3,21 @@ import { HttpModule } from '@angular/http';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
-// Import the AF2 Module
+// Import Scripts
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { ChartsModule } from 'ng2-charts';
 
 //Pages
 import { HomePage } from '../pages/home/home';
 import { FirealarmPage } from '../pages/firealarm/firealarm'; 
+import { MeasurementsOverviewPage } from '../pages/measurements/measurementsOverview';
 
-//Login Pages
-import { LoginPage } from '../pages/login/login';
-import { ResetPasswordPage } from '../pages/login/resetPassword';
+//User pages
+import { LoginPage } from '../pages/users/login/login';
+import { ResetPasswordPage } from '../pages/users/login/resetPassword';
+import { UserSettingsPage } from '../pages/users/settings/userSettings';
+import { UsersTab } from '../pages/users/settings/tabs/usersTab';
+import { SensorsTab } from '../pages/users/settings/tabs/sensorsTab';
 
 //Services
 import { LoginService } from '../services/users/login.service';
@@ -23,7 +28,6 @@ import { TempatureService } from '../services/sensors/tempature.service';
 
 //Components && directivesa
 import { MyApp } from './app.component';
-
 
 // Firebase config 
 export const firebaseConfig = {
@@ -43,22 +47,31 @@ export const firebaseAuthConfig = {
   imports: [ // module dependencies
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     IonicModule.forRoot(MyApp),    
-    HttpModule
+    HttpModule,
+    ChartsModule
   ],
   declarations: [  // components and directives
     MyApp,
     LoginPage,
     ResetPasswordPage,
+    UserSettingsPage,
+    UsersTab,
+    SensorsTab,
     HomePage,
-    FirealarmPage
+    FirealarmPage,
+    MeasurementsOverviewPage
   ],
   bootstrap: [IonicApp], // root component
   entryComponents: [
     MyApp,
     LoginPage,
     ResetPasswordPage,
+    UserSettingsPage,
+    UsersTab,
+    SensorsTab,
     HomePage,
-    FirealarmPage
+    FirealarmPage,
+    MeasurementsOverviewPage
   ],
 providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
             LoginService, UserService, TempatureService]  // services

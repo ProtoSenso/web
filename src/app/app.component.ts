@@ -7,12 +7,15 @@ import { AngularFire } from 'angularfire2'
 
 //Pages
 import { HomePage } from '../pages/home/home';
-import { LoginPage } from '../pages/login/login';
+import { LoginPage } from '../pages/users/login/login';
 import { FirealarmPage } from '../pages/firealarm/firealarm'; 
+import { UserSettingsPage } from '../pages/users/settings/userSettings';
+import { MeasurementsOverviewPage } from '../pages/measurements/measurementsOverview';
 
 //Services
 import { LoginService } from '../services/users/login.service';
 import { UserService } from '../services/users/user.service';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -47,7 +50,9 @@ export class MyApp{
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Fire alarm', component: FirealarmPage}
+      { title: 'Fire alarm', component: FirealarmPage },
+      { title: 'Measurements overview', component: MeasurementsOverviewPage },
+      { title: 'Settings', component: UserSettingsPage }
     ];
   }
 

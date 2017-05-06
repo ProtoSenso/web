@@ -4,7 +4,7 @@ import {
   AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { LoginService } from  '../../services/users/login.service';
+import { LoginService } from  '../../../services/users/login.service';
 
 @Component({
   selector: 'page-reset-password',
