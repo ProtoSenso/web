@@ -8,34 +8,24 @@
 </ion-header>
 
 <ion-content padding>
-
-Misschien is localization ook handig om erachter te komen als iemand een ongeluk heeft gehad.
-    - geolocation
-    
-Login
-    - 
-
-
-  <div class="row-wrapper">
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <div class="tile">
-        <div class="tile-header">
-          <h1>House Alarm</h1>
-        </div>
-        <div class="tile-body">
-          <div id="houseFire">
-            <div id="flamegroup" *ngIf="fire">
-                <div class="flame" id="fl1"></div>
-                <div class="flame" id="fl2"></div>
-                <div class="flame" id="fl3"></div> 
-            </div>
-          </div>
-        </div>
-      </div>
+ <div class="wrapper" style="display: block;" padding>
+   <div class="canvasWrapper">
+       <canvas #statusChart class="chartSize" baseChart
+                [data]="doughnutChartData"
+                [chartType]="doughnutChartType"
+                [options]="doughnutChartOptions"
+                [colors]="doughnutChartColors"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)">
+       </canvas>
+       <ion-icon class="canvasRound" *ngIf="getPriority() == 0" name="happy"></ion-icon>
+       <ion-icon class="canvasRound" *ngIf="getPriority() == 1" name="checkmark-circle"></ion-icon>
+       <ion-icon class="canvasTriangle" *ngIf="getPriority() == 2" name="warning"></ion-icon>
+       <ion-icon class="canvasRound" *ngIf="getPriority() == 3" name="close-circle"></ion-icon>
     </div>
+    <h3 style="text-align: center">{{status}}</h3>
   </div>
-</div>
-
-
+  <button  ion-button block clear (click)="changeData()">
+    Change Data
+  </button>
 </ion-content>

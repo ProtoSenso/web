@@ -8,14 +8,14 @@ export class TempatureService {
 
     constructor(private http: Http) {}
 
-    private baseUrl = 'http://192.168.1.65:9080/';
+    private baseUrl = 'http://192.168.1.185:9080/';
     private tempaturesUrl = 'api/temperature_readings/'; // URL to web API
     
     listTempatures(): Observable<tempature[]> {
         var url = this.baseUrl + this.tempaturesUrl;
         let headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8', 'Access-Control-Allow-Origin': '*'});
         let options = new RequestOptions({headers: headers})
-        return this.http.get("http://localhost:53975/api/temperatures", options)
+        return this.http.get(this.baseUrl + this.tempaturesUrl, options)
                   .map(res => this.extractData(res))
                   .catch((error) => this.handleError(error));
     } 
