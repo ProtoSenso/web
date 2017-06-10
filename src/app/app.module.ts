@@ -16,7 +16,8 @@ import { MeasurementsOverviewPage } from '../pages/measurements/measurementsOver
 import { LoginPage } from '../pages/users/login/login';
 import { ResetPasswordPage } from '../pages/users/login/resetPassword';
 import { UserSettingsPage } from '../pages/users/settings/userSettings';
-import { UsersTab } from '../pages/users/settings/tabs/usersTab';
+import { UsersTab } from '../pages/users/settings/tabs/usersTab/usersTab';
+import { QrCodeRegistration } from '../pages/users/settings/tabs/usersTab/modals/QrCodeRegistration';
 import { SensorsTab } from '../pages/users/settings/tabs/sensorsTab';
 
 //Services
@@ -59,7 +60,8 @@ export const firebaseAuthConfig = {
     SensorsTab,
     HomePage,
     FirealarmPage,
-    MeasurementsOverviewPage
+    MeasurementsOverviewPage,
+    QrCodeRegistration
   ],
   bootstrap: [IonicApp], // root component
   entryComponents: [
@@ -71,7 +73,8 @@ export const firebaseAuthConfig = {
     SensorsTab,
     HomePage,
     FirealarmPage,
-    MeasurementsOverviewPage
+    MeasurementsOverviewPage,
+    QrCodeRegistration
   ],
 providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
             LoginService, UserService, TempatureService]  // services

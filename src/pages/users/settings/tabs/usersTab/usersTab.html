@@ -1,0 +1,57 @@
+<ion-content>
+    <ion-item>
+        <ion-label class="colorBlack">Name</ion-label>
+        <ion-input disabled type="text" value="{{ user.fullName }}"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+        <ion-label class="colorBlack">Age</ion-label>
+        <ion-input disabled type="text" value="{{ user.age }}"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+        <ion-label class="colorBlack">Location</ion-label>
+        <ion-input disabled type="text" value="{{ user.location }}"></ion-input>
+    </ion-item>   
+
+    <ion-item>
+        <ion-label class="colorBlack">Monitor type</ion-label>
+        <ion-select [(ngModel)]="user.watcherType"  interface="popover">
+            <ion-option value="0">Ouder</ion-option>
+            <ion-option value="1">Kind</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <br />
+    
+    <div *ngIf="user.watcherType == 0">
+        <ion-list>
+            <ion-list-header>Watcher</ion-list-header>
+
+            <ion-item *ngFor="let parent of parents">
+                <ion-icon name='body' item-left></ion-icon>
+                <ion-label>
+                    {{ parent.fullName }}
+                    </ion-label>
+                <ion-icon name='trash' item-right></ion-icon>
+            </ion-item>
+        </ion-list>
+
+        <button ion-button full (click)="this.addParent()">Add parent</button>
+    </div>
+    <div *ngIf="user.watcherType == 1">
+        <ion-list >
+            <ion-list-header>Watching</ion-list-header> 
+
+            <ion-item *ngFor="let child of children">
+                <ion-icon name='body' item-left></ion-icon>
+                <ion-label>
+                    {{ child.fullName }}
+                    </ion-label>
+                <ion-icon name='trash' item-right></ion-icon>
+            </ion-item>
+        </ion-list>
+        
+        <button ion-button full (click)="addChild()">Add child</button>
+    </div>
+  </ion-content>

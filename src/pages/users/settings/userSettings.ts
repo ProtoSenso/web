@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UsersTab } from './tabs/usersTab';
+import { UsersTab } from './tabs/usersTab/usersTab';
 import { SensorsTab } from './tabs/sensorsTab';
 
 @Component({

@@ -9,15 +9,15 @@
 
     .canvasRound {
         position: absolute;
-        top: 30%;
-        left: 42%;
         font-size: 90px;
+        top: calc(50% - 51px); 
+        left: calc(50% - 35px); 
     }
 
     .canvasTriangle {
         position: absolute;
-        top: 35%;
-        left: 44.5%;
+        top: calc(50% - 55px); 
+        left: calc(50% - 39px);
         font-size: 90px;
     }
 
@@ -39,15 +39,15 @@
 
     .canvasRound {
         position: absolute;
-        top: 36%;
-        left: 44%;
+        top: calc(50% - 24px); 
+        left: calc(50% - 20px);
         font-size: 50px;
     }
 
     .canvasTriangle {
         position: absolute;
-        top: 34%;
-        left: 44%;
+        top: calc(50% - 27px); 
+        left: calc(50% - 22px);
         font-size: 50px;
     }
 }
@@ -70,15 +70,15 @@
 
     .canvasRound {
         position: absolute;
-        top: 36%;
-        left: 44%;
+         top: calc(50% - 24px); 
+        left: calc(50% - 20px);
         font-size: 50px;
     }
 
     .canvasTriangle {
         position: absolute;
-        top: 34%;
-        left: 44%;
+        top: calc(50% - 27px); 
+        left: calc(50% - 22px);
         font-size: 50px;
     }
 }
@@ -98,15 +98,15 @@
 
     .canvasRound {
         position: absolute;
-        top: 36%;
-        left: 44%;
+        top: calc(50% - 24px); 
+        left: calc(50% - 20px);
         font-size: 50px;
     }
 
     .canvasTriangle {
         position: absolute;
-        top: 34%;
-        left: 44%;
+        top: calc(50% - 27px); 
+        left: calc(50% - 22px);
         font-size: 50px;
     }
 }
@@ -125,15 +125,15 @@
 
     .canvasRound {
         position: absolute;
-        top: 36%;
-        left: 44%;
+        top: calc(50% - 24px); 
+        left: calc(50% - 20px);
         font-size: 50px;
     }
 
     .canvasTriangle {
         position: absolute;
-        top: 34%;
-        left: 44%;
+        top: calc(50% - 27px); 
+        left: calc(50% - 20px);
         font-size: 50px;
     }
 }
@@ -151,15 +151,15 @@
 
     .canvasRound {
         position: absolute;
-        top: 30%;
-        left: 42%;
+        top: calc(50% - 51px); 
+        left: calc(50% - 35px);
         font-size: 90px;
     }
 
     .canvasTriangle {
         position: absolute;
-        top: 35%;
-        left: 44.5%;
+        top: calc(50% - 55px); 
+        left: calc(50% - 39px);
         font-size: 90px;
     }
 }
@@ -177,15 +177,15 @@
 
     .canvasRound {
         position: absolute;
-        top: 36%;
-        left: 45%;
+         top: calc(50% - 51px); 
+        left: calc(50% - 35px);
         font-size: 90px;
     }
 
     .canvasTriangle {
         position: absolute;
-        top: 35%;
-        left: 44.5%;
+        top: calc(50% - 55px); 
+        left: calc(50% - 39px);
         font-size: 90px;
     }
 }
