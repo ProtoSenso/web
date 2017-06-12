@@ -3,7 +3,7 @@ import { NavController, LoadingController, AlertController  } from 'ionic-angula
 import { LoginService } from '../../../services/users/login.service';
 import { HomePage } from '../../home/home';
 import { ResetPasswordPage } from '../login/resetPassword';
-
+ 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -17,6 +17,7 @@ export class LoginPage {
 
     loginUser() {      
         this.authData.loginUserGoogle().then( authData => {
+          console.log(authData);
            this.navCtrl.setRoot(HomePage);
         }, error => {
          this.loading.dismiss().then( () => {

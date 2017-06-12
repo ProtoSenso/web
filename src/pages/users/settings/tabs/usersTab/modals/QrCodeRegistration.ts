@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController, NavParams, ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'QrCodeRegistration',
   templateUrl: 'QrCodeRegistration.html'
 })
-export class QrCodeRegistration {
+export class QrCodeRegistration implements OnInit{
 
  constructor(params: NavParams, public viewCtrl: ViewController) {
-   console.log('UserId', params.get('userId'));
  }
 
+  ngOnInit(): void {
+
+  }
 
   closeModal() {
     this.viewCtrl.dismiss();

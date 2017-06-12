@@ -64,16 +64,18 @@ export class UserService {
         backendUser.location = "Amsterdam, Nederland";
         backendUser.watcherType = 0;
 
+        console.log(user);
+
         this.currentUser = this.userMapping(user, backendUser);
         console.log('this.isAuthenticated tokens en shit', this.currentUser);
     }
 
     private userMapping(googleUser, backendUser){
-        var user = new User(googleUser.uid, googleUser.auth.displayName);
+        var user = new User(googleUser.uid, googleUser.displayName);
         user.uId = googleUser.uid;
-        user.fullName = googleUser.auth.displayName;
-        user.email = googleUser.auth.email;
-        user.photoUrl = googleUser.auth.photoURL;
+        user.fullName = googleUser.displayName;
+        user.email = googleUser.email;
+        user.photoUrl = googleUser.photoURL;
         
         user.location = backendUser.location;
         user.age = backendUser.age;

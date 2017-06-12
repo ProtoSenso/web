@@ -2,9 +2,11 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { HttpModule } from '@angular/http';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { BrowserModule } from '@angular/platform-browser';
 
 // Import Scripts
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import { AngularFireModule } from 'angularfire2';
+ import { AngularFireAuth } from 'angularfire2/auth';
 import { ChartsModule } from 'ng2-charts';
 
 //Pages
@@ -39,15 +41,11 @@ export const firebaseConfig = {
     messagingSenderId: "405262453706"
 };
 
-export const firebaseAuthConfig = {
-  provider: AuthProviders.Google,
-  method: AuthMethods.Redirect
-};
-
 @NgModule({
   imports: [ // module dependencies
-    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
-    IonicModule.forRoot(MyApp),    
+    IonicModule.forRoot(MyApp),  
+    BrowserModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     HttpModule,
     ChartsModule
   ],
@@ -62,6 +60,7 @@ export const firebaseAuthConfig = {
     FirealarmPage,
     MeasurementsOverviewPage,
     QrCodeRegistration
+    
   ],
   bootstrap: [IonicApp], // root component
   entryComponents: [
@@ -77,6 +76,6 @@ export const firebaseAuthConfig = {
     QrCodeRegistration
   ],
 providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
-            LoginService, UserService, TempatureService]  // services
+            LoginService, UserService, TempatureService, AngularFireAuth]  // services
 })
 export class AppModule {}

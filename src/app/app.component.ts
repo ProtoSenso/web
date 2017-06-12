@@ -2,8 +2,7 @@ import { Component, NgZone, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import '../rxjs-operators';
-
-import { AngularFire } from 'angularfire2'
+import { AngularFireAuth } from 'angularfire2/auth';
 
 //Pages
 import { HomePage } from '../pages/home/home';
@@ -28,24 +27,23 @@ export class MyApp{
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public af: AngularFire, public loginService: LoginService, public userService: UserService ) {
+  constructor(public platform: Platform, public loginService: LoginService, public userService: UserService, public af: AngularFireAuth ) {
     this.initializeApp();
     this.zone = new NgZone({});
-  
-    this.af.auth.subscribe((user) => {
-          this.zone.run( () => {
-            console.log(user);
-            if(!user){
-              this.rootPage = LoginPage;
-              this.af.auth.unsubscribe();
-            }
-            else {
-              this.rootPage = HomePage;
-              this.userService.setUser(user);
-              this.af.auth.subscribe();
-            }
+    
+    this.af.authState.subscribe((user) => {
+        this.zone.run( () => {
+              console.log(user);
+              if(!user){
+                this.rootPage = LoginPage;
+              }
+              else {
+                this.rootPage = HomePage;
+                this.userService.setUser(user);
+              }
+          });
         });
-      });
+  
   
     // used for an example of ngFor and navigation
     // { title: 'Fire alarm', component: FirealarmPage },
