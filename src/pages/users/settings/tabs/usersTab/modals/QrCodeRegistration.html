@@ -1,4 +1,11 @@
 <ion-content>
-    
-    <button ion-button block (click)="closeModal()">Close Modal</button>
+    <div text-center class="center-vertical">
+        <qr-code [value]="qrCodeData" [size]="200" [canvas]='true' [padding]='15'></qr-code>
+    </div>
+
+    <ion-footer no-shadow>
+        <ion-toolbar position="bottom">
+            <button ion-button block (click)="closeModal()">Close Modal</button>
+        </ion-toolbar>
+    </ion-footer>
 </ion-content>

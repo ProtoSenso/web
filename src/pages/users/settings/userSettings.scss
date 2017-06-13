@@ -8,6 +8,12 @@
     text-align: center;
 }
 
+.center-vertical{
+    height: 100%;
+  display: block;
+  vertical-align: middle;
+}
+
 @media only screen and (max-device-width:480px){
     /* styles for mobile browsers smaller than 480px; (iPhone) */
     .wrapper{

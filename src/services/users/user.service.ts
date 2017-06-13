@@ -6,7 +6,9 @@ export class UserService {
 
     private currentUser: User;
 
-    constructor() { }
+    constructor() { 
+        this.currentUser = new User("0", "");
+    }
 
     public getName() {
         let org = null;

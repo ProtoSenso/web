@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from 'angularfire2';
  import { AngularFireAuth } from 'angularfire2/auth';
 import { ChartsModule } from 'ng2-charts';
+import { QRCodeModule } from 'angular2-qrcode';
 
 //Pages
 import { HomePage } from '../pages/home/home';
@@ -47,7 +48,8 @@ export const firebaseConfig = {
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     HttpModule,
-    ChartsModule
+    ChartsModule,
+    QRCodeModule
   ],
   declarations: [  // components and directives
     MyApp,
