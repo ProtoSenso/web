@@ -10,7 +10,7 @@ import { Chart } from 'ng2-chartjs2';
 })
 export class HomePage implements OnInit, AfterContentInit {
 
-    private priority: number = 0;
+    private priority: number = -1;
     private status: string;
 
     // Doughnut
@@ -94,6 +94,8 @@ export class HomePage implements OnInit, AfterContentInit {
             pointHoverBackgroundColor: ['#fff', '#fff'],
             pointHoverBorderColor: ['rgba(77,83,96,1)']
         }];
+
+        console.log(this.doughnutChartColors);
     }
 
 
@@ -105,7 +107,8 @@ export class HomePage implements OnInit, AfterContentInit {
             leftOver = 0;
 
         this.doughnutChartData = [randomData, leftOver];
-
+        this.doughnutChartColors = [];
+        this.doughnutChartData = [];
         this.doughnutChartColors = [{
             backgroundColor: ['rgba(255, 233, 0, 0.5)',  'rgba(255, 255, 255, 0.5)'],
             borderColor: ['rgba(255, 233, 0, 1)', 'rgba(189, 189, 189, 0.4)'],
@@ -114,6 +117,8 @@ export class HomePage implements OnInit, AfterContentInit {
             pointHoverBackgroundColor: ['#fff', '#fff'],
             pointHoverBorderColor: ['rgba(77,83,96,1)']
         }];
+
+        console.log(this.doughnutChartColors);
     }
     
     //Prio 2
@@ -133,6 +138,8 @@ export class HomePage implements OnInit, AfterContentInit {
             pointHoverBackgroundColor: ['#fff', '#fff'],
             pointHoverBorderColor: ['rgba(77,83,96,1)']
         }];
+
+        console.log(this.doughnutChartColors);
     }
 
     //Prio 3

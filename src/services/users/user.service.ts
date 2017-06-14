@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../dto/users/user';
+import { RegisterUserService } from './registerUser.service';
 
 @Injectable()
 export class UserService {
 
     private currentUser: User;
 
-    constructor() { 
+    constructor(public _registerUser: RegisterUserService) { 
         this.currentUser = new User("0", "");
     }
 
@@ -73,6 +74,8 @@ export class UserService {
     }
 
     private userMapping(googleUser, backendUser){
+        var x = this._registerUser.getOrRegister(googleUser.uid, googleUser.displayName, googleUser.email);
+        console.log(x);
         var user = new User(googleUser.uid, googleUser.displayName);
         user.uId = googleUser.uid;
         user.fullName = googleUser.displayName;

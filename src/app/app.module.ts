@@ -26,6 +26,7 @@ import { SensorsTab } from '../pages/users/settings/tabs/sensorsTab';
 //Services
 import { LoginService } from '../services/users/login.service';
 import { UserService } from '../services/users/user.service';
+import { RegisterUserService } from '../services/users/registerUser.service';
 
 //Sensors services
 import { TempatureService } from '../services/sensors/tempature.service';
@@ -78,6 +79,7 @@ export const firebaseConfig = {
     QrCodeRegistration
   ],
 providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
-            LoginService, UserService, TempatureService, AngularFireAuth]  // services
+            LoginService, UserService, TempatureService, AngularFireAuth,
+            RegisterUserService]  // services
 })
 export class AppModule {}
