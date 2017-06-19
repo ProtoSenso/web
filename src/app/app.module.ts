@@ -6,9 +6,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 // Import Scripts
 import { AngularFireModule } from 'angularfire2';
- import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { ChartsModule } from 'ng2-charts';
 import { QRCodeModule } from 'angular2-qrcode';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 //Pages
 import { HomePage } from '../pages/home/home';
@@ -21,6 +22,7 @@ import { ResetPasswordPage } from '../pages/users/login/resetPassword';
 import { UserSettingsPage } from '../pages/users/settings/userSettings';
 import { UsersTab } from '../pages/users/settings/tabs/usersTab/usersTab';
 import { QrCodeRegistration } from '../pages/users/settings/tabs/usersTab/modals/QrCodeRegistration';
+import { QrCodeScanner } from '../pages/users/settings/tabs/usersTab/modals/QrCodeScanner';
 import { SensorsTab } from '../pages/users/settings/tabs/sensorsTab';
 
 //Services
@@ -62,7 +64,8 @@ export const firebaseConfig = {
     HomePage,
     FirealarmPage,
     MeasurementsOverviewPage,
-    QrCodeRegistration
+    QrCodeRegistration,
+    QrCodeScanner
     
   ],
   bootstrap: [IonicApp], // root component
@@ -76,10 +79,11 @@ export const firebaseConfig = {
     HomePage,
     FirealarmPage,
     MeasurementsOverviewPage,
-    QrCodeRegistration
+    QrCodeRegistration,
+    QrCodeScanner
   ],
 providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
             LoginService, UserService, TempatureService, AngularFireAuth,
-            RegisterUserService]  // services
+            RegisterUserService, BarcodeScanner]  // services
 })
 export class AppModule {}

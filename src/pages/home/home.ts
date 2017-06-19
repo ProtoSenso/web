@@ -15,7 +15,7 @@ export class HomePage implements OnInit, AfterContentInit {
 
     // Doughnut
     public doughnutChartType:string = 'doughnut';
-    public doughnutChartData:Array<any>;
+    public doughnutChartData:Array<any> = [];
     public doughnutChartOptions:any = {
         responsive: true,
         cutoutPercentage: 70,

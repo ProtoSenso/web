@@ -1,6 +1,5 @@
 {
   "name": "Grannywatcher",
-  "app_id": "",
-  "v2": true,
-  "typescript": true
+  "app_id": "ProjXGrannywatcher",
+  "type": "ionic-angular"
 }

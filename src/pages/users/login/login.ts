@@ -15,12 +15,18 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public authData: LoginService,public alertCtrl: AlertController, 
     public loadingCtrl: LoadingController) { }
 
-    loginUser() {      
+    loginUser() {   
+      console.log("Login user");   
         this.authData.loginUserGoogle().then( authData => {
-          console.log(authData);
+            console.log("Login user 2");
+            console.log(authData);
+                  console.log("Login user 3");
            this.navCtrl.setRoot(HomePage);
+                 console.log("Login user 4");
         }, error => {
          this.loading.dismiss().then( () => {
+           
+                  console.log("Login user 5");
            console.log(error);
           let alert = this.alertCtrl.create({
             message: error.message,
@@ -31,9 +37,15 @@ export class LoginPage {
               }
             ]
           });
+            
+           
+                  console.log("Login user 6");
+          
           alert.present();
         });
       });
+
+
 
       this.loading = this.loadingCtrl.create({
           dismissOnPageChange: true,
