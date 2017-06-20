@@ -46,10 +46,10 @@ export class MyApp{
   
   
     // used for an example of ngFor and navigation
-    // { title: 'Fire alarm', component: FirealarmPage },
     //
     this.pages = [
       { title: 'Home', component: HomePage },
+      { title: 'Fire alarm', component: FirealarmPage },
       { title: 'Measurements overview', component: MeasurementsOverviewPage },
       { title: 'Settings', component: UserSettingsPage }
     ];

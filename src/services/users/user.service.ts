@@ -74,7 +74,7 @@ export class UserService {
     }
 
     private userMapping(googleUser, backendUser){
-        var x = this._registerUser.getOrRegister(googleUser.uid, googleUser.displayName, googleUser.email);
+        var x = this._registerUser.getOrRegister(googleUser.uid, googleUser.displayName, googleUser.email).subscribe((data) => { return data });
         console.log(x);
         var user = new User(googleUser.uid, googleUser.displayName);
         user.uId = googleUser.uid;

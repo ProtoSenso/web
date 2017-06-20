@@ -23,7 +23,7 @@ export class HomePage implements OnInit, AfterContentInit {
         hover: { mode: 'index'},
         maintainAspectRatie: false
     };
-    public doughnutChartColors:Array<any>;
+    public doughnutChartColors:Array<any> = [];
 
     @ViewChild("statusChart") myCanvas;  
     context: CanvasRenderingContext2D;
@@ -33,12 +33,6 @@ export class HomePage implements OnInit, AfterContentInit {
     ngOnInit(): void { }
     
     ngAfterContentInit(){
-        setTimeout(5000);
-        let canvas = this.myCanvas.nativeElement;
-        this.context = canvas.getContext("2d");
-
-        this.context.fillText("Test", 0, 100);
-        this.context.fill();
     }
 
     // events
@@ -84,6 +78,10 @@ export class HomePage implements OnInit, AfterContentInit {
         if(randomData === 100)
             leftOver = 0;
 
+        this.doughnutChartData.length = 0;
+        this.doughnutChartColors.length = 0;
+        this.doughnutChartColors = [];
+        
         this.doughnutChartData = [randomData, leftOver];
 
         this.doughnutChartColors = [{
@@ -106,9 +104,12 @@ export class HomePage implements OnInit, AfterContentInit {
         if(randomData === 100)
             leftOver = 0;
 
-        this.doughnutChartData = [randomData, leftOver];
+        this.doughnutChartData.length = 0;
+        this.doughnutChartColors.length = 0;
         this.doughnutChartColors = [];
-        this.doughnutChartData = [];
+
+        this.doughnutChartData = [randomData, leftOver];
+        
         this.doughnutChartColors = [{
             backgroundColor: ['rgba(255, 233, 0, 0.5)',  'rgba(255, 255, 255, 0.5)'],
             borderColor: ['rgba(255, 233, 0, 1)', 'rgba(189, 189, 189, 0.4)'],
@@ -128,6 +129,9 @@ export class HomePage implements OnInit, AfterContentInit {
         if(randomData === 100)
             leftOver = 0;
 
+
+            this.doughnutChartData.length = 0;
+        this.doughnutChartColors.length = 0;
         this.doughnutChartData = [randomData, leftOver];
 
         this.doughnutChartColors = [{
@@ -148,6 +152,10 @@ export class HomePage implements OnInit, AfterContentInit {
         var leftOver = 100 - randomData;
         if(randomData === 100)
             leftOver = 0;
+
+        this.doughnutChartData.length = 0;
+        this.doughnutChartColors.length = 0;
+        this.doughnutChartColors = [];
 
         this.doughnutChartData = [randomData, leftOver];
             
