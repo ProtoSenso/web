@@ -1,32 +1,35 @@
- .wrapper{
-        margin: auto;
-        width: 50%;
-    }
-        
-    .canvasWrapper {
-        position: relative;
-    }
+$fontSize: 90px; 
 
-    .canvasRound {
-        position: absolute;
-        font-size: 90px;
-        top: calc(50% - 51px); 
-        left: calc(50% - 35px); 
-    }
+.wrapper{
+    margin: auto;
+    width: 50%;
+}
+    
+.canvasWrapper {
+    position: relative;
+}
 
-    .canvasTriangle {
-        position: absolute;
-        top: calc(50% - 55px); 
-        left: calc(50% - 39px);
-        font-size: 90px;
-    }
+.canvasRound {
+    position: absolute;
+    font-size: 90px;
+    top: calc(50% - 51px); 
+    left: calc(50% - 35px); 
+}
+
+.canvasTriangle {
+    position: absolute;
+    top: calc(50% - 55px); 
+    left: calc(50% - 39px);
+    font-size: $fontSize;
+}
+
 
 @media only screen and (max-device-width:480px){
     /* styles for mobile browsers smaller than 480px; (iPhone) */
     .wrapper{
         padding: 0px !important;
         height: auto;
-        margin-top: 30px;
+        margin-top: 50px;
     }
 
     
@@ -34,52 +37,22 @@
         position: relative;
         width: 288px !important;
         height: 144px !important;
-        margin-left: -70px;
+        margin-left: -60px;
+        margin-bottom: 170px;
     }
 
     .canvasRound {
         position: absolute;
-        top: calc(50% - 24px); 
-        left: calc(50% - 20px);
-        font-size: 50px;
+        top: calc(50% + 20px); 
+        left: calc(50% - 35px);
+        font-size: $fontSize;
     }
 
     .canvasTriangle {
         position: absolute;
-        top: calc(50% - 27px); 
-        left: calc(50% - 22px);
-        font-size: 50px;
-    }
-}
-/* different techniques for iPad screening */
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
-    /* For portrait layouts only */
-    .wrapper{
-        padding: 0px !important;
-        height: auto;
-        margin-top: 30px;
-    }
-
-    
-    .canvasWrapper {
-        position: relative;
-        
-        width: 288px !important;
-        height: 144px !important;
-    }
-
-    .canvasRound {
-        position: absolute;
-         top: calc(50% - 24px); 
-        left: calc(50% - 20px);
-        font-size: 50px;
-    }
-
-    .canvasTriangle {
-        position: absolute;
-        top: calc(50% - 27px); 
-        left: calc(50% - 22px);
-        font-size: 50px;
+        top: calc(50% + 15px); 
+        left: calc(50% - 35px);
+        font-size: $fontSize;
     }
 }
 
@@ -98,16 +71,16 @@
 
     .canvasRound {
         position: absolute;
-        top: calc(50% - 24px); 
-        left: calc(50% - 20px);
-        font-size: 50px;
+        top: calc(50% - 50px); 
+        left: calc(50% - 35px);
+        font-size: $fontSize;
     }
 
     .canvasTriangle {
         position: absolute;
-        top: calc(50% - 27px); 
-        left: calc(50% - 22px);
-        font-size: 50px;
+        top: calc(50% - 60px); 
+        left: calc(50% - 35px);
+        font-size: $fontSize;
     }
 }
 @media only screen and (device-width:768px){
@@ -125,16 +98,16 @@
 
     .canvasRound {
         position: absolute;
-        top: calc(50% - 24px); 
-        left: calc(50% - 20px);
-        font-size: 50px;
+        top: calc(50% - 50px); 
+        left: calc(50% - 35px);
+        font-size: $fontSize;
     }
 
     .canvasTriangle {
         position: absolute;
-        top: calc(50% - 27px); 
-        left: calc(50% - 20px);
-        font-size: 50px;
+        top: calc(50% - 60px); 
+        left: calc(50% - 35px);
+        font-size: $fontSize;
     }
 }
 @media only screen and (min-width:960px){
@@ -153,14 +126,14 @@
         position: absolute;
         top: calc(50% - 51px); 
         left: calc(50% - 35px);
-        font-size: 90px;
+        font-size: $fontSize;
     }
 
     .canvasTriangle {
         position: absolute;
         top: calc(50% - 55px); 
         left: calc(50% - 39px);
-        font-size: 90px;
+        font-size: $fontSize;
     }
 }
 @media only screen and (min-width:1440px){
@@ -177,15 +150,15 @@
 
     .canvasRound {
         position: absolute;
-         top: calc(50% - 51px); 
+        top: calc(50% - 51px); 
         left: calc(50% - 35px);
-        font-size: 90px;
+        font-size: $fontSize;
     }
 
     .canvasTriangle {
         position: absolute;
         top: calc(50% - 55px); 
         left: calc(50% - 39px);
-        font-size: 90px;
+        font-size: $fontSize;
     }
 }

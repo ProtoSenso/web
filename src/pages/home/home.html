@@ -9,7 +9,7 @@
 
 <ion-content padding>
  <div class="wrapper" style="display: block;" padding>
-   <h1>Henk</h1>
+   <h1 style="text-align: center;">{{currentParent}}</h1>
    <div class="canvasWrapper">
        <canvas #statusChart class="chartSize" baseChart
                 [data]="doughnutChartData"
@@ -26,7 +26,4 @@
     </div>
     <h3 style="text-align: center">{{status}}</h3>
   </div>
-  <button  ion-button block clear (click)="changeData()">
-    Change Data
-  </button>
 </ion-content>
