@@ -16,18 +16,14 @@ export class LoginPage {
     public loadingCtrl: LoadingController) { }
 
     loginUser() {   
-      console.log("Login user");   
         this.authData.loginUserGoogle().then( authData => {
-            console.log("Login user 2");
             console.log(authData);
-                  console.log("Login user 3");
-           this.navCtrl.setRoot(HomePage);
-                 console.log("Login user 4");
+            this.navCtrl.setRoot(HomePage);
         }, error => {
          this.loading.dismiss().then( () => {
-           
-                  console.log("Login user 5");
            console.log(error);
+           this.skipLogin();
+           /*
           let alert = this.alertCtrl.create({
             message: error.message,
             buttons: [
@@ -37,11 +33,9 @@ export class LoginPage {
               }
             ]
           });
-            
-           
-                  console.log("Login user 6");
           
           alert.present();
+          */
         });
       });
 

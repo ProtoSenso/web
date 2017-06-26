@@ -2,16 +2,16 @@ import { Component, OnInit, ViewChild, AfterContentInit } from '@angular/core';
 import { TempatureService } from '../../services/sensors/tempature.service';
 import { Observable } from 'rxjs/Observable';
 import { NavController } from 'ionic-angular';
-import { Chart } from 'ng2-chartjs2';
+import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
   selector: 'HomePage',
   templateUrl: 'home.html'
 })
 export class HomePage implements OnInit, AfterContentInit {
-
-    private priority: number = -1;
+    private priority: number = 2;
     private status: string;
+    private currentParent: string;
 
     // Doughnut
     public doughnutChartType:string = 'doughnut';
@@ -30,7 +30,10 @@ export class HomePage implements OnInit, AfterContentInit {
 
     constructor() { this.changeData(); }
 
-    ngOnInit(): void { }
+    ngOnInit(): void { 
+        this.currentParent = "Henk";
+
+    }
     
     ngAfterContentInit(){
     }
@@ -40,7 +43,6 @@ export class HomePage implements OnInit, AfterContentInit {
         this.changeData();    }
     
     public chartHovered(e:any):void {
-        console.log(e);
     }
 
     public changeData(): void{
@@ -65,10 +67,6 @@ export class HomePage implements OnInit, AfterContentInit {
             this.changeDataRed();
             this.status = "Something is wrong!";
         }
-
-        
-        console.log(this.getPriority());
-
     }
 
     // Prio: 0
@@ -80,7 +78,6 @@ export class HomePage implements OnInit, AfterContentInit {
 
         this.doughnutChartData.length = 0;
         this.doughnutChartColors.length = 0;
-        this.doughnutChartColors = [];
         
         this.doughnutChartData = [randomData, leftOver];
 
@@ -93,7 +90,6 @@ export class HomePage implements OnInit, AfterContentInit {
             pointHoverBorderColor: ['rgba(77,83,96,1)']
         }];
 
-        console.log(this.doughnutChartColors);
     }
 
 
@@ -106,7 +102,6 @@ export class HomePage implements OnInit, AfterContentInit {
 
         this.doughnutChartData.length = 0;
         this.doughnutChartColors.length = 0;
-        this.doughnutChartColors = [];
 
         this.doughnutChartData = [randomData, leftOver];
         
@@ -118,8 +113,6 @@ export class HomePage implements OnInit, AfterContentInit {
             pointHoverBackgroundColor: ['#fff', '#fff'],
             pointHoverBorderColor: ['rgba(77,83,96,1)']
         }];
-
-        console.log(this.doughnutChartColors);
     }
     
     //Prio 2
@@ -142,8 +135,6 @@ export class HomePage implements OnInit, AfterContentInit {
             pointHoverBackgroundColor: ['#fff', '#fff'],
             pointHoverBorderColor: ['rgba(77,83,96,1)']
         }];
-
-        console.log(this.doughnutChartColors);
     }
 
     //Prio 3
