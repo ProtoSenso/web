@@ -13,7 +13,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 //Pages
 import { HomePage } from '../pages/home/home';
-import { FirealarmPage } from '../pages/firealarm/firealarm'; 
 import { MeasurementsOverviewPage } from '../pages/measurements/measurementsOverview';
 
 //User pages
@@ -62,7 +61,6 @@ export const firebaseConfig = {
     UsersTab,
     SensorsTab,
     HomePage,
-    FirealarmPage,
     MeasurementsOverviewPage,
     QrCodeRegistration,
     QrCodeScanner
@@ -77,7 +75,6 @@ export const firebaseConfig = {
     UsersTab,
     SensorsTab,
     HomePage,
-    FirealarmPage,
     MeasurementsOverviewPage,
     QrCodeRegistration,
     QrCodeScanner

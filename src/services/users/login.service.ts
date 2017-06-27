@@ -18,8 +18,7 @@ export class LoginService {
         return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
     }
 
-    get authenticated(): boolean {
-        console.log(this.currentUser);
+    get authenticated(): boolean {  
         return this.currentUser !== null;
     }
 

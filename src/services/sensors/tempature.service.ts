@@ -8,12 +8,12 @@ export class TempatureService {
 
     constructor(private http: Http) {}
 
-    private baseUrl = 'http://192.168.1.185:9080/';
+    private baseUrl = 'http://192.168.1.164:9080/';
     private tempaturesUrl = 'api/temperature_readings/'; // URL to web API
     
     listTempatures(): Observable<tempature[]> {
         var url = this.baseUrl + this.tempaturesUrl;
-        let headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8', 'Access-Control-Allow-Origin': '*'});
+        let headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8'});
         let options = new RequestOptions({headers: headers})
         return this.http.get(this.baseUrl + this.tempaturesUrl, options)
                   .map(res => this.extractData(res))
@@ -22,15 +22,11 @@ export class TempatureService {
 
 
     private extractData(res: Response) {
-        console.log("api results: ");
-        console.log(res);
-        
         let body = res.json();
         return body || { };
     }
 
     private handleError(error: any): Promise<any> {
-        console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }
 }

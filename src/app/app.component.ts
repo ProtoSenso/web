@@ -7,7 +7,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 //Pages
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/users/login/login';
-import { FirealarmPage } from '../pages/firealarm/firealarm'; 
 import { UserSettingsPage } from '../pages/users/settings/userSettings';
 import { MeasurementsOverviewPage } from '../pages/measurements/measurementsOverview';
 
