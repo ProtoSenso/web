@@ -3,6 +3,8 @@ export class tempature {
     sensorUID: string;
     deviceUID: string;
 
+    measurement: number;
+    measurementUnit: string;
     temperature: number;
     temperatureCRC: string;
     isTemperatureOK: boolean;

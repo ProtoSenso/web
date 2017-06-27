@@ -3,7 +3,9 @@ import { NavController, LoadingController, AlertController  } from 'ionic-angula
 import { LoginService } from '../../../services/users/login.service';
 import { HomePage } from '../../home/home';
 import { ResetPasswordPage } from '../login/resetPassword';
- 
+import { UserService } from '../../../services/users/user.service'
+import { User } from '../../../dto/users/user';
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -13,11 +15,10 @@ export class LoginPage {
   loading: any;
 
   constructor(public navCtrl: NavController, public authData: LoginService,public alertCtrl: AlertController, 
-    public loadingCtrl: LoadingController) { }
+    public loadingCtrl: LoadingController, private _userRepo: UserService) { }
 
     loginUser() {   
         this.authData.loginUserGoogle().then( authData => {
-            console.log(authData);
             this.navCtrl.setRoot(HomePage);
         }, error => {
          this.loading.dismiss().then( () => {
@@ -54,6 +55,10 @@ export class LoginPage {
     
     skipLogin(){
       this.navCtrl.setRoot(HomePage);
+
+      var user = new User("PENqt7wPvgeBKSui90o0XtOb51K3", "Timothy Tseng");
+
+      this._userRepo.setUser(user);
     }
 
     /**
