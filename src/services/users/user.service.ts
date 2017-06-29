@@ -75,7 +75,7 @@ export class UserService {
         user2.firstName = "Bart";
         user2.lastName = "Vink";
         user2.age = 23;
-        user2.parents = [userBert, userLeo];
+        user2.followee = [userBert, userLeo];
         user2.watcherType = 0;
 
         this.currentUser = user2;

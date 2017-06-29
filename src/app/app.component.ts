@@ -12,7 +12,6 @@ import { UserSettingsPage } from '../pages/users/settings/userSettings';
 import { MeasurementsOverviewPage } from '../pages/measurements/measurementsOverview';
 
 //Services
-import { LoginService } from '../services/users/login.service';
 import { UserService } from '../services/users/user.service';
 
 import {Singleton } from '../services/config';

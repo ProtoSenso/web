@@ -18,11 +18,6 @@ cordova plugin add cordova-plugin-customurlscheme --variable \ URL_SCHEME=com.fi
 
 
 
-## Sha 1
-sha1: 91:E3:B7:75:AC:38:60:33:0A:67:B0:B1:3C:7B:17:E5:AE:52:B2:C8
+// Fixes Cordova build errors
 
-Links for tomorrow 
-
-startpoint: http://blog.ionic.io/google-oauth-changes/
-https://github.com/EddyVerbruggen/cordova-plugin-googleplus
-https://developers.google.com/drive/android/auth
+https://forum.ionicframework.com/t/solved-ionic-run-android-com-android-support-conflicting-v26-alpha1-and-v25-3-1/91826/6

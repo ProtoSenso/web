@@ -46,6 +46,7 @@
         "ionic-plugin-keyboard": "^2.2.1",
         "ionicons": "3.0.0",
         "ng2-charts": "1.6.0",
+        "phonegap-plugin-barcodescanner": "^6.0.6",
         "rxjs": "5.1.1",
         "sw-toolbox": "3.4.0",
         "zone.js": "0.8.10"
@@ -90,7 +91,8 @@
             },
             "cordova-plugin-googleplus": {
                 "REVERSED_CLIENT_ID": "com.googleusercontent.apps.405262453706-59vk8j8t78amjn3q2o2scvpl6sth9d75"
-            }
+            },
+            "phonegap-plugin-barcodescanner": {}
         },
         "platforms": [
             "android"

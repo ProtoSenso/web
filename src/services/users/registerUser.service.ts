@@ -53,7 +53,7 @@ export class UserManagementService {
 
     registerParent(uIdParent: string, uIdchild: string)
     {
-         var url = Singleton.getHost() + this.registerParentUrl + "/" + uIdchild +"/" + uIdParent;
+        var url = Singleton.getHost() + this.registerParentUrl + "/" + uIdchild +"/" + uIdParent;
         let headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8', 'Access-Control-Allow-Origin': '*'});
         let options = new RequestOptions({headers: headers})
 
