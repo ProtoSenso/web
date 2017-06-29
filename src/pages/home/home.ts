@@ -53,7 +53,7 @@ export class HomePage implements OnInit, AfterContentInit {
                         }
                         console.log("Tempature from server: " + temp);
                 });
-        }, 10000);
+        }, 60000);
     }
     
     ngAfterContentInit(){

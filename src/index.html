@@ -12,15 +12,9 @@
   <meta name="theme-color" content="#4e8ef7">
   <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
-
   <!-- cordova.js required for cordova apps -->
   <script src="cordova.js"></script>
 
-  <!-- Chart.js -->
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
-  
   <!-- un-comment this code to enable service worker
   <script>
     if ('serviceWorker' in navigator) {
@@ -36,7 +30,16 @@
 <body>
 
   <!-- Ionic's root component and where the app will load -->
-  <ion-app></ion-app>
+  <ion-app>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>
+
+    <!-- Chart.js -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+      
+
+  </ion-app>
 
   <!-- The polyfills js is generated during the build process -->
   <script src="build/polyfills.js"></script>

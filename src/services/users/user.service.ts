@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../dto/users/user';
-import { RegisterUserService } from './registerUser.service';
+import { UserManagementService } from './registerUser.service';
 
 @Injectable()
 export class UserService {
 
     private currentUser: User;
 
-    constructor(public _registerUser: RegisterUserService) { 
-        this.currentUser = new User("0", "");
+    constructor(public _registerUser: UserManagementService) { 
+        this.currentUser = new User();
     }
 
     public getName() {
@@ -48,7 +48,7 @@ export class UserService {
     public getUid() {
         let org = null;
         try {
-            org = this.currentUser.uId;
+            org = this.currentUser.uid;
         } catch (e) {
             org = null;
         }
@@ -60,52 +60,26 @@ export class UserService {
     }
 
     public setUser(user) {
-        var backendUser = new User("PENqt7wPvgeBKSui90o0XtOb51K3","Timothy Tseng");
-        backendUser.age = 10;
-        backendUser.parents = [new User("1", "Henk"), new User("2", "Piet"), new User("3", "Jan")];
-        backendUser.children = [new User("13", "Summer"),new User("12", "Autumn"), new User("11", "Winter"), new User("10", "Spring")];
-        backendUser.location = "Amsterdam, Nederland";
-        backendUser.watcherType = 0;
+        var userBert = new User();
+        userBert.firstName = "Bert";
+        userBert.lastName = "is de beste";
 
-        this.userMapping(user, backendUser);
+
+        var userLeo = new User();
+        userLeo.firstName = "Leo";
+        userLeo.lastName = "mag er ook best zijn";
+
+        var user2 = new User();
+        user2.uid = "bartcvink@hotmail.com";
+        user2.email = "bartcvink@hotmail.com";
+        user2.firstName = "Bart";
+        user2.lastName = "Vink";
+        user2.age = 23;
+        user2.parents = [userBert, userLeo];
+        user2.watcherType = 0;
+
+        this.currentUser = user2;
         console.log('this.isAuthenticated tokens en shit', this.currentUser);
-    }
-
-    private userMapping(googleUser, backendUser){
-        if(googleUser == null){
-            var user =  this._registerUser.getOrRegister("PENqt7wPvgeBKSui90o0XtOb51K3", "Timothy Tseng", "tvcstseng@gmail.com")
-        .subscribe((backendUser) => { 
-            var user = new User("PENqt7wPvgeBKSui90o0XtOb51K3", "Timothy Tseng");
-            user.email =  "tvcstseng@gmail.com"
-            user.photoUrl = "";
-            
-            user.location = backendUser.location;
-            user.age = backendUser.age;
-            user.parents = backendUser.parents;
-            user.children = backendUser.children;
-            user.watcherType = backendUser.watcherType;
-
-         });
-        }
-        else {
-            var user = this._registerUser.getOrRegister(googleUser.uid, googleUser.displayName, googleUser.email)
-            .subscribe((backendUser) => { 
-
-                var user = new User(googleUser.uid, googleUser.displayName);
-                user.uId = googleUser.uid;
-                user.fullName = googleUser.displayName;
-                user.email = googleUser.email;
-                user.photoUrl = googleUser.photoURL;
-                
-                user.location = backendUser.location;
-                user.age = backendUser.age;
-                user.parents = backendUser.parents;
-                user.children = backendUser.children;
-                user.watcherType = backendUser.watcherType;
-
-                this.currentUser = user;
-            });
-        }
     }
 
     public isLoggedIn() {

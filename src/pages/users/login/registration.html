@@ -1,0 +1,52 @@
+<ion-content padding>
+   <img src="assets/img/GrannywatcherLogo.png" class="myphoto">
+   
+    <form (ngSubmit)="submit()">
+        <ion-item>
+          <ion-label color="primary" stacked>Email adress</ion-label>
+          <ion-input type="text" [(ngModel)]="user.email" name="email" type="email" placeholder="Email adress"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="primary" stacked>Password</ion-label>
+          <ion-input placeholder="Text Input"  name="password" type="password" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="primary" stacked>Password check</ion-label>
+          <ion-input placeholder="Text Input"  name="passwordCheck" [(ngModel)]="passwordCheck" type="password" placeholder="Password"></ion-input>
+        </ion-item>
+
+        <ion-item> 
+          <ion-label color="primary" stacked>First Name</ion-label>
+          <ion-input placeholder="Text Input"  name="firstName" [(ngModel)]="user.firstName"></ion-input>
+        </ion-item>
+
+      <ion-item>
+          <ion-label color="primary" stacked>Last Name</ion-label>
+          <ion-input placeholder="Text Input"  name="lastName" [(ngModel)]="user.lastName"></ion-input>
+        </ion-item>
+
+      <ion-item>
+          <ion-label color="primary" stacked>Age</ion-label>
+          <ion-input placeholder="Text Input"  name="age" [(ngModel)]="user.age"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label class="colorBlack">Monitoring type</ion-label>
+          <ion-select [(ngModel)]="user.watcherType"  interface="popover">
+              <ion-option value="0">Kind</ion-option>
+              <ion-option value="1">Ouder</ion-option>
+          </ion-select>
+      </ion-item>
+
+      <button  ion-button block clear large>
+          Register
+      </button>
+    </form>
+
+      <button  ion-button block clear large (click)="cancel()">
+          Cancel
+      </button>
+</ion-content>
+

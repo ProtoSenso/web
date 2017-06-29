@@ -4,7 +4,7 @@ import {
   AlertController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { LoginService } from  '../../../services/users/login.service';
+import { UserManagementService } from  '../../../services/users/registerUser.service';
 
 @Component({
   selector: 'page-reset-password',
@@ -17,7 +17,7 @@ export class ResetPasswordPage {
   passwordChanged: boolean = false;
   submitAttempt: boolean = false;
 
-  constructor(public authData: LoginService, public formBuilder: FormBuilder, 
+  constructor(public authData: UserManagementService, public formBuilder: FormBuilder, 
         public nav: NavController, public loadingCtrl: LoadingController, 
         public alertCtrl: AlertController) {
 
@@ -32,35 +32,6 @@ export class ResetPasswordPage {
         if (!this.resetPasswordForm.valid){
             console.log(this.resetPasswordForm.value);
         } else {
-            this.authData.resetPassword(this.resetPasswordForm.value.email).then((user) => {
-            let alert = this.alertCtrl.create({
-                message: "We just sent you a reset link to your email",
-                buttons: [
-                {
-                    text: "Ok",
-                    role: 'cancel',
-                    handler: () => {
-                    this.nav.pop();
-                    }
-                }
-                ]
-            });
-            alert.present();
-
-            }, (error) => {
-            var errorMessage: string = error.message;
-            let errorAlert = this.alertCtrl.create({
-                message: errorMessage,
-                buttons: [
-                {
-                    text: "Ok",
-                    role: 'cancel'
-                }
-                ]
-            });
-
-            errorAlert.present();
-            });
         }
     }
 

@@ -6,7 +6,7 @@ import { QrCodeRegistration } from './modals/QrCodeRegistration';
 import { QrCodeScanner } from './modals/QrCodeScanner';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
-import { RegisterUserService } from '../../../../../services/users/registerUser.service';
+import { UserManagementService } from '../../../../../services/users/registerUser.service';
 
 @Component({
     templateUrl: 'usersTab.html'
@@ -18,8 +18,7 @@ export class UsersTab implements OnInit{
 
     user: User;
 
-    constructor(public userService: UserService, public modalCtrl: ModalController, 
-                private scanner: BarcodeScanner, private registration: RegisterUserService){
+    constructor(public userService: UserService, public modalCtrl: ModalController,private registration: UserManagementService){
 
     }
 
@@ -35,6 +34,8 @@ export class UsersTab implements OnInit{
     {
          var childuId = this.userService.getUid();
 
+         this.registration.getOrRegister(childuId, "", "");
+         /*
           this.scanner.scan().then((result) => {
 
             this.registration.registerParent(result.text, childuId);
@@ -47,10 +48,11 @@ export class UsersTab implements OnInit{
             }, (err) => {
                 // An error occurred
             });
+            */
     }
 
     addChild(){
-      let profileModal = this.modalCtrl.create(QrCodeRegistration, { userId: this.user.uId });
+      let profileModal = this.modalCtrl.create(QrCodeRegistration, { userId: this.user.email });
       profileModal.present();
     }
 }

@@ -9,11 +9,24 @@
 <ion-content padding>
    <img src="assets/img/GrannywatcherLogo.png" class="myphoto">
    
-    <button  ion-button block clear large (click)="loginUser()">
-      Login
-    </button>
+    <form (ngSubmit)="loginUser()">
+      <ion-item>
+        <ion-input type="text" [(ngModel)]="user.email" name="email" type="email" placeholder="Email adress"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="user.password" name="password" ion-input type="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <button  ion-button block clear large>
+        Login
+      </button>
+    </form>
 
+    <button ion-button block clear large (click)="goToRegister()">
+      Register
+    </button>
     <button ion-button block clear large (click)="goToResetPassword()">
       I forgot my password
     </button>
+    
+
 </ion-content>

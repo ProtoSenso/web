@@ -4,13 +4,15 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import {Singleton } from '../config';
 
 @Injectable()
-export class RegisterUserService {
+export class UserManagementService {
 
-    private baseUrl = 'http://192.168.1.164:9080/';
+    
     private getUserUrl = 'api/user/'; 
     private registerParentUrl = 'api/follower/';
+    private userUrl = '/api/user';
 
     constructor(private http: Http) {
     }
@@ -20,8 +22,21 @@ export class RegisterUserService {
                                     'Access-Control-Allow-Methods': 'POST'
  */
 
+    getUser(email:string, password: string): Observable<User> {
+        var url = Singleton.getHost() + this.getUserUrl;
+        let headers = new Headers({ 'Content-Type': 'application/json'});
+        let options = new RequestOptions({headers: headers});
+
+        var body = JSON.stringify({email: email, password: password});
+
+        return this.http.post(url, body, options)
+                  .map(res => this.extractData(res))
+                  .catch((error) => this.handleError(error));
+    }
+
     getOrRegister(uId: string, name:string, email: string): Observable<User> {
-        var url = this.baseUrl + this.getUserUrl;
+        var url = Singleton.getHost() + this.getUserUrl;
+        console.log(url);
         let headers = new Headers({ 'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers});
 
@@ -38,7 +53,7 @@ export class RegisterUserService {
 
     registerParent(uIdParent: string, uIdchild: string)
     {
-         var url = this.baseUrl + this.registerParentUrl + "/" + uIdchild +"/" + uIdParent;
+         var url = Singleton.getHost() + this.registerParentUrl + "/" + uIdchild +"/" + uIdParent;
         let headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8', 'Access-Control-Allow-Origin': '*'});
         let options = new RequestOptions({headers: headers})
 
@@ -48,6 +63,33 @@ export class RegisterUserService {
                   .catch((error) => this.handleError(error));
     }
 
+    addUser(body: Object): Observable<User> {
+        // const bodyString = JSON.stringify(body); // Stringify payload
+        const headers = new Headers({'Content-Type': 'application/json'}); // ... Set content type to JSON
+        const options = new RequestOptions({headers: headers}); // Create a request option
+
+        return this.http.post(Singleton.getHost() + this.userUrl, body, options) // ...using post request
+        .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+        .catch((error: any) => Observable.throw(error.json().error || 'Server error')); // ...errors if any
+    }
+
+    // Update a user
+    updateUser(body: Object): Observable<User[]> {
+        const bodyString = JSON.stringify(body); // Stringify payload
+        const headers = new Headers({'Content-Type': 'application/json'}); // ... Set content type to JSON
+        const options = new RequestOptions({headers: headers}); // Create a request option
+
+        return this.http.put(Singleton.getHost() + `${this.userUrl}/${body['id']}`, body, options) // ...using put request
+        .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+        .catch((error: any) => Observable.throw(error.json().error || 'Server error')); // ...errors if any
+    }
+
+    // Delete a user
+    removeUser(id: string): Observable<User[]> {
+        return this.http.delete(Singleton.getHost() + `${this.userUrl}/${id}`) // ...using put request
+        .map((res: Response) => res.json()) // ...and calling .json() on the response to return data
+        .catch((error: any) => Observable.throw(error.json().error || 'Server error')); // ...errors if any
+    }
 
     private extractData(res: Response) {
         let body = res.json();
