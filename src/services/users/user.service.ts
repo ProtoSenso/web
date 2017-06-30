@@ -59,27 +59,18 @@ export class UserService {
         return this.currentUser;
     }
 
-    public setUser(user) {
-        var userBert = new User();
-        userBert.firstName = "Bert";
-        userBert.lastName = "is de beste";
-
-
-        var userLeo = new User();
-        userLeo.firstName = "Leo";
-        userLeo.lastName = "mag er ook best zijn";
-
-        var user2 = new User();
-        user2.uid = "bartcvink@hotmail.com";
-        user2.email = "bartcvink@hotmail.com";
-        user2.firstName = "Bart";
-        user2.lastName = "Vink";
-        user2.age = 23;
-        user2.followee = [userBert, userLeo];
-        user2.watcherType = 0;
-
-        this.currentUser = user2;
+    public setUser(user): User {
+        this.currentUser = user;
         console.log('this.isAuthenticated tokens en shit', this.currentUser);
+
+        var followe = new User();
+        followe.firstName = "Timothy";
+        followe.lastName = "Tseng";
+        followe.age = 46;
+        
+        this.currentUser.followee = [];
+        this.currentUser.followee.push(followe);
+        return this.currentUser;
     }
 
     public isLoggedIn() {

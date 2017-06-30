@@ -35,7 +35,13 @@ export class UsersTab implements OnInit{
         var childuId = this.userService.getUid();
 
         BarcodeScanner.scan().then((barcodeData) => {
-            this.registration.registerParent(barcodeData, childuId);
+            this.registration.registerParent(barcodeData, childuId).subscribe((user) => {
+                console.log("Registration success");
+                console.log(user);
+                this.user = this.userService.setUser(user);
+            }, (err) => {
+                console.log(err);
+            });
         }, (err) => {
             alert("Couldn't scan qr code");
         });

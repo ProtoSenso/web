@@ -25,17 +25,23 @@ export class LoginPage {
     }
 
     loginUser() {   
-      /*
-      this.authData.getUser(this.user.email, this.user.password);
-
       this.loading = this.loadingCtrl.create({
           dismissOnPageChange: true,
         });
 
-      this.loading.present();
-        */
-       this.skipLogin();
-        
+      this.loading.present().then(() => {
+
+        var user = this.authData.getUser(this.user.email, this.user.password)
+            .subscribe((user) => {
+              console.log("Succes login");
+              console.log(user);
+              this._userRepo.setUser(user);
+              this.navCtrl.setRoot(HomePage);
+            }, (err) => {
+              console.log(err);
+              this.navCtrl.setRoot(LoginPage);
+            });
+        });
     }
 
     goToResetPassword(){

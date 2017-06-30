@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, AfterContentInit } from '@angular/core';
 import { TempatureService } from '../../services/sensors/tempature.service';
+import { UserService } from '../../services/users/user.service';
 import { Observable } from 'rxjs/Observable';
 import { NavController } from 'ionic-angular';
 import { BaseChartDirective } from 'ng2-charts';
@@ -28,7 +29,7 @@ export class HomePage implements OnInit, AfterContentInit {
     @ViewChild("statusChart") myCanvas;  
     context: CanvasRenderingContext2D;
 
-    constructor(private tempatureService: TempatureService) 
+    constructor(private tempatureService: TempatureService, private userService: UserService) 
     { 
          this.doughnutChartColors = [{
             backgroundColor: ['rgba(117, 209, 24, 0.5)', 'rgba(255, 233, 0, 0.5)', 'rgba(247, 155, 89, 0.5)', 'rgba(255, 26, 26, 0.5)'],
@@ -40,23 +41,37 @@ export class HomePage implements OnInit, AfterContentInit {
         }];
     }
 
+
     ngOnInit(): void { 
-        this.currentParent = "Henk";
-        
+        var user = this.userService.getUser();
+
+        if(user.followee != null && user.followee != undefined && user.followee.length > 0){
+            this.currentParent = user.followee[0];
+        }
+        else{
+            this.currentParent = "";
+        }        
+
+        this.getTemperature();
+
         setInterval(() => {
-            this.tempatureService.listTempatures().subscribe(
+            this.getTemperature();
+        }, 5000);
+    }
+    
+    ngAfterContentInit(){
+    }
+
+    getTemperature(){
+         this.tempatureService.listTempatures().subscribe(
                 data => {
                         var temp = (data).pop();
                         if(temp != null)
                         {
-                            this.changeData(temp.measurement);
+                            this.changeData(+temp.unixTimestamp);
                         }
                         console.log("Tempature from server: " + temp);
                 });
-        }, 60000);
-    }
-    
-    ngAfterContentInit(){
     }
 
     // events
@@ -67,29 +82,35 @@ export class HomePage implements OnInit, AfterContentInit {
 
     public chartHovered(e:any):void { }
 
-    public changeData(tempature: number): void{
+    public changeData(sensorDate: number): void{
         
-        if(tempature > 80 || tempature < -10){
-            this.changeDataRed();
-            this.status = "Something is wrong!";
-            this.priority = 3;
-        }
-        else if(tempature > 60 || tempature < 0){
-            this.changeDataOrange();
-            this.status = "High chance something is wrong";
-            this.priority = 2;
-        }
-        else if(tempature > 40 || tempature < 10){
-            this.changeDataYellow();
-            this.status = "A slight anomaly";
-            this.priority = 1;
-        }
-        else if(tempature > 10){
+        
+        var date = new Date();
+        var currentUnixDateTime = date.getTime();
+            
+        console.log("CurrentDate; " + currentUnixDateTime);
+        console.log("CurrentDate; " + (currentUnixDateTime - (2*60*60*1000)));
+        console.log("SensorDate: " + sensorDate);
+        if((currentUnixDateTime - (2*60*60*1000)) < sensorDate){
             this.changeDataGreen();
             this.status = "Ok!";
             this.priority = 0;
         }
-        
+        else if((currentUnixDateTime - (5*60*60*1000)) < sensorDate){
+            this.changeDataYellow();
+            this.status = "A slight anomaly";
+            this.priority = 1;
+        }
+         else if((currentUnixDateTime - (12*60*60*1000)) < sensorDate){
+            this.changeDataOrange();
+            this.status = "High chance something is wrong";
+            this.priority = 2;
+        }
+        else {
+            this.changeDataRed();
+            this.status = "Something is wrong!";
+            this.priority = 3;
+        }
     }
 
     // Prio: 0

@@ -63,7 +63,7 @@ export class MyApp{
   }
 
   logOut(){
-    this.rootPage = LoginPage;
+    this.nav.setRoot(LoginPage);
     this.userService.setUser(null);
     location.reload();
   }
