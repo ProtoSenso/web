@@ -21,3 +21,9 @@ cordova plugin add cordova-plugin-customurlscheme --variable \ URL_SCHEME=com.fi
 // Fixes Cordova build errors
 
 https://forum.ionicframework.com/t/solved-ionic-run-android-com-android-support-conflicting-v26-alpha1-and-v25-3-1/91826/6
+
+// polyfill fix
+npm install promise-polyfill --save-exact
+
+// Barcode scan fix for grannywatcher.gradle
+ Integer.parseInt("" + cdvMinSdkVersion)
