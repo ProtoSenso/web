@@ -1,7 +1,7 @@
 <ion-content>
     <ion-item>
         <ion-label class="colorBlack">Name</ion-label>
-        <ion-input disabled type="text" value="{{ user.fullName }}"></ion-input>
+        <ion-input disabled type="text" value="{{ user.firstName }}  {{user.lastName}}"></ion-input>
     </ion-item>
     
     <ion-item>
@@ -15,7 +15,7 @@
     </ion-item>   
 
     <ion-item>
-        <ion-label class="colorBlack">Monitor type</ion-label>
+        <ion-label class="colorBlack">Monitoring type</ion-label>
         <ion-select [(ngModel)]="user.watcherType"  interface="popover">
             <ion-option value="0">Ouder</ion-option>
             <ion-option value="1">Kind</ion-option>
@@ -31,7 +31,7 @@
             <ion-item *ngFor="let parent of parents">
                 <ion-icon name='body' item-left></ion-icon>
                 <ion-label>
-                    {{ parent.fullName }}
+                    {{ parent.firstName }} {{ parent.lastName }}
                     </ion-label>
                 <ion-icon name='trash' item-right></ion-icon>
             </ion-item>
@@ -46,7 +46,7 @@
             <ion-item *ngFor="let child of children">
                 <ion-icon name='body' item-left></ion-icon>
                 <ion-label>
-                    {{ child.fullName }}
+                    {{ child.firstName }} {{child.lastName}}
                     </ion-label>
                 <ion-icon name='trash' item-right></ion-icon>
             </ion-item>

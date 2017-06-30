@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController, NavParams, ViewController } from 'ionic-angular';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { BarcodeScanner } from 'cordova-plugin-qrscanner';
 
 @Component({
   selector: 'QrCodeScanner',
@@ -11,7 +11,7 @@ export class QrCodeScanner implements OnInit{
 
   qrCodeData: any;
 
- constructor(public viewCtrl: ViewController, private scanner: BarcodeScanner) {
+ constructor(public viewCtrl: ViewController) {
  }
 
   ngOnInit(): void {

@@ -9,7 +9,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ChartsModule } from 'ng2-charts';
 import { QRCodeModule } from 'angular2-qrcode';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+//import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 //Pages
 import { HomePage } from '../pages/home/home';
@@ -17,6 +18,7 @@ import { MeasurementsOverviewPage } from '../pages/measurements/measurementsOver
 
 //User pages
 import { LoginPage } from '../pages/users/login/login';
+import { RegistrationPage } from '../pages/users/login/registration';
 import { ResetPasswordPage } from '../pages/users/login/resetPassword';
 import { UserSettingsPage } from '../pages/users/settings/userSettings';
 import { UsersTab } from '../pages/users/settings/tabs/usersTab/usersTab';
@@ -25,9 +27,9 @@ import { QrCodeScanner } from '../pages/users/settings/tabs/usersTab/modals/QrCo
 import { SensorsTab } from '../pages/users/settings/tabs/sensorsTab';
 
 //Services
-import { LoginService } from '../services/users/login.service';
 import { UserService } from '../services/users/user.service';
-import { RegisterUserService } from '../services/users/registerUser.service';
+import { UserManagementService } from '../services/users/registerUser.service';
+import { EmitterService } from '../services/emitter/emitter.service';
 
 //Sensors services
 import { TempatureService } from '../services/sensors/tempature.service';
@@ -56,6 +58,7 @@ export const firebaseConfig = {
   declarations: [  // components and directives
     MyApp,
     LoginPage,
+    RegistrationPage,
     ResetPasswordPage,
     UserSettingsPage,
     UsersTab,
@@ -70,6 +73,7 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     LoginPage,
+    RegistrationPage,
     ResetPasswordPage,
     UserSettingsPage,
     UsersTab,
@@ -80,7 +84,7 @@ export const firebaseConfig = {
     QrCodeScanner
   ],
 providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, 
-            LoginService, UserService, TempatureService, AngularFireAuth,
-            RegisterUserService, BarcodeScanner]  // services
+            UserService, TempatureService, AngularFireAuth,
+            UserManagementService, InAppBrowser, EmitterService]  // services
 })
 export class AppModule {}

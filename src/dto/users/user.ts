@@ -1,21 +1,18 @@
 export class User {
-    constructor(uId: string, fullName: string){
-        this.uId = uId;
-        this.fullName = fullName;
-    }
 
-    uId: string;
+    uid: string;
+    email: string;
+    password: string;
     firstName: string;
     lastName: string;
-    fullName: string;
-    email: string;
+    fullName(): string { return this.firstName + " " + this.lastName;  }
     photoUrl: string;
     age: number;
-    dateOfBirth: Date;
+    dateOfBirth: string;
     location: string;
-
     watcherType: number;
-    parents: any[];
-    children: any[];
+
+    followee: any[];
+    followers: any[];
     sensors: any[];
 }

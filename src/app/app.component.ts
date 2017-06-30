@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import '../rxjs-operators';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AlertController } from 'ionic-angular';
 
 //Pages
 import { HomePage } from '../pages/home/home';
@@ -11,8 +12,9 @@ import { UserSettingsPage } from '../pages/users/settings/userSettings';
 import { MeasurementsOverviewPage } from '../pages/measurements/measurementsOverview';
 
 //Services
-import { LoginService } from '../services/users/login.service';
 import { UserService } from '../services/users/user.service';
+
+import {Singleton } from '../services/config';
 
 
 @Component({
@@ -26,24 +28,10 @@ export class MyApp{
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public loginService: LoginService, public userService: UserService, public af: AngularFireAuth ) {
+  constructor(public platform: Platform, public userService: UserService, public af: AngularFireAuth, private alertCtrl: AlertController ) {
     this.initializeApp();
-    this.zone = new NgZone({});
-    
-    this.af.authState.subscribe((user) => {
-        this.zone.run( () => {
-              console.log(user);
-              if(!user){
-                this.rootPage = LoginPage;
-              }
-              else {
-                this.rootPage = HomePage;
-                this.userService.setUser(user);
-              }
-          });
-        });
   
-  
+    this.rootPage = LoginPage;
     // used for an example of ngFor and navigation
     //  { title: 'Fire alarm', component: FirealarmPage },
     //
@@ -63,6 +51,11 @@ export class MyApp{
     });
   }
 
+  
+  setIp(){
+    
+  }
+
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
@@ -70,9 +63,37 @@ export class MyApp{
   }
 
   logOut(){
-    this.loginService.logoutUser();
+    this.rootPage = LoginPage;
+    this.userService.setUser(null);
     location.reload();
-    //this.rootPage = LoginPage;
   }
 
+
+  presentPrompt() {
+  let alert = this.alertCtrl.create({
+    title: 'IP:PORT/',
+    inputs: [
+      {
+        name: 'IP',
+        placeholder: 'IP'
+      }
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'setIP',
+        handler: data => {
+          Singleton.setHost(data);
+        }
+      }
+    ]
+  });
+  alert.present();
+}
 }
