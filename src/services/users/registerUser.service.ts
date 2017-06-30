@@ -10,19 +10,15 @@ import {Singleton } from '../config';
 export class UserManagementService {
 
     
-    private getUserUrl = 'api/user/'; 
-    private registerParentUrl = 'api/follower/';
-    private userUrl = '/api/user';
+    private getUserUrl = 'api/users/'; 
+    private registerParentUrl = 'api/followee/';
+    private userUrl = 'api/user';
 
     constructor(private http: Http) {
     }
 
-/*'Content-Type': 'application/json;charset=UTF-8',
-                                    'Access-Control-Allow-Origin': '*', 
-                                    'Access-Control-Allow-Methods': 'POST'
- */
-
     getUser(email:string, password: string): Observable<User> {
+        /*
         var url = Singleton.getHost() + this.getUserUrl;
         let headers = new Headers({ 'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers});
@@ -30,6 +26,16 @@ export class UserManagementService {
         var body = JSON.stringify({email: email, password: password});
 
         return this.http.post(url, body, options)
+                  .map(res => this.extractData(res))
+                  .catch((error) => this.handleError(error));
+                  */
+        var encodeEmail = btoa(email);
+        var url = Singleton.getHost() + this.getUserUrl + encodeEmail;
+        let headers = new Headers({ 'Content-Type': 'application/json;'});
+        let options = new RequestOptions({headers: headers})
+
+        return this.http.get(url, 
+                            options)
                   .map(res => this.extractData(res))
                   .catch((error) => this.handleError(error));
     }
@@ -53,13 +59,13 @@ export class UserManagementService {
 
     registerParent(uIdParent: string, uIdchild: string)
     {
-        var url = Singleton.getHost() + this.registerParentUrl + "/" + uIdchild +"/" + uIdParent;
-        let headers = new Headers({ 'Content-Type': 'application/json;charset=UTF-8', 'Access-Control-Allow-Origin': '*'});
+        var url = Singleton.getHost() + this.registerParentUrl + btoa(uIdchild) +"/" + btoa(uIdParent);
+        let headers = new Headers({ 'Content-Type': 'application/json;', });
         let options = new RequestOptions({headers: headers})
 
         return this.http.get(url, 
                             options)
-                  .map(res => this.extractData(res))
+                  .map(res => <User>res.json())
                   .catch((error) => this.handleError(error));
     }
 
